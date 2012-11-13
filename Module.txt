@@ -1,0 +1,13 @@
+﻿Name: Orchard Scripting Extensions: JavaScript
+AntiForgery: enabled
+Author: The Orchard Hungary Team
+Website: http://orchardscriptingjs.codeplex.com
+Version: 1.0
+OrchardVersion: 1.6
+Description: Enables Orchard scripting through JavaScript. Uses Javascript.NET (http://javascriptdotnet.codeplex.com/).
+Features:
+    OrchardHUN.Scripting.JavaScript:
+		Name: Orchard Scripting Extensions: JavaScript
+        Description: Enables Orchard scripting through JavaScript. Uses Javascript.NET (http://javascriptdotnet.codeplex.com/).
+		Category: Scripting
+		Dependencies: OrchardHUN.Scripting, JavaScript.NET
