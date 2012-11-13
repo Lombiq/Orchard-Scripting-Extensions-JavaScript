@@ -67,10 +67,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Placement.info" />
     <Content Include="Web.config" />
     <Content Include="Views\Web.config" />
-    <Content Include="Scripts\Web.config" />
-    <Content Include="Styles\Web.config" />
     <Content Include="Properties\AssemblyInfo.cs" />
     <Content Include="Module.txt" />
   </ItemGroup>
@@ -83,10 +82,18 @@
       <Project>{9916839c-39fc-4ceb-a5af-89ca7e87119f}</Project>
       <Name>Orchard.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OrchardHUN.Scripting\OrchardHUN.Scripting.csproj">
+      <Project>{c8715027-a8c5-45dc-8a22-fb713af14468}</Project>
+      <Name>OrchardHUN.Scripting</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <Content Include="Views\EditorTemplates\Parts.ScriptJs.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Drivers\ScriptPartDriver.cs" />
+    <Compile Include="IJavaScriptRuntimeEventHandler.cs" />
+    <Compile Include="Services\JavaScriptRuntime.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
