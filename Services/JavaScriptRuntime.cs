@@ -6,12 +6,15 @@ using Noesis.Javascript;
 using OrchardHUN.Scripting.Exceptions;
 using OrchardHUN.Scripting.Services;
 using Orchard.Exceptions;
+using Orchard;
+using Orchard.Environment;
 
 namespace OrchardHUN.Scripting.JavaScript.Services
 {
     public class JavaScriptRuntime : IScriptingRuntime
     {
         private readonly IJavaScriptRuntimeEventHandler _eventHandler;
+        private readonly Work<IWorkContextAccessor> _wcaWork;
 
         private readonly IEngineDescriptor _descriptor = new EngineDescriptor("JS", new Orchard.Localization.LocalizedString("JavaScript"));
         public IEngineDescriptor Descriptor
@@ -20,9 +23,10 @@ namespace OrchardHUN.Scripting.JavaScript.Services
         }
 
 
-        public JavaScriptRuntime(IJavaScriptRuntimeEventHandler eventHandler)
+        public JavaScriptRuntime(IJavaScriptRuntimeEventHandler eventHandler, Work<IWorkContextAccessor> wcaWork)
         {
             _eventHandler = eventHandler;
+            _wcaWork = wcaWork;
         }
 
 
@@ -38,6 +42,26 @@ namespace OrchardHUN.Scripting.JavaScript.Services
                     }
 
                     context.SetParameter("Factory", new TypeFactory(scope.Assemblies));
+
+                    var workContext = _wcaWork.Value.GetContext();
+                    var orchardGlobal = new Dictionary<string, dynamic>();
+                    orchardGlobal["WorkContext"] = workContext;
+                    orchardGlobal["OrchardServices"] = workContext.Resolve<IOrchardServices>();
+                    orchardGlobal["Layout"] = new StaticShape(workContext.Layout);
+
+                    var existing = scope.GetVariable("Orchard");
+                    if (existing != null)
+                    {
+                        if (!(existing is IDictionary<string, object>)) throw new ArgumentException("The Orchard global variable should be an IDictionary<string, dynamic>.");
+
+                        var existingDictionary = existing as IDictionary<string, dynamic>;
+                        foreach (var existingItem in existingDictionary)
+                        {
+                            orchardGlobal[existingItem.Key] = existingItem.Value;
+                        }
+                    }
+
+                    context.SetParameter("Orchard", orchardGlobal);
 
                     _eventHandler.BeforeExecution(new BeforeJavaScriptExecutionContext(scope, context));
                     var output = context.Run(expression);
