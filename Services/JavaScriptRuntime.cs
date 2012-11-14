@@ -38,7 +38,7 @@ namespace OrchardHUN.Scripting.JavaScript.Services
                     }
 
                     _eventHandler.BeforeExecution(new BeforeJavaScriptExecutionContext(scope, context));
-                    context.Run(expression);
+                    var output = context.Run(expression);
                     _eventHandler.AfterExecution(new AfterJavaScriptExecutionContext(scope, context));
 
                     foreach (var variableName in scope.Variables.Select(kvp => kvp.Key))
@@ -46,7 +46,7 @@ namespace OrchardHUN.Scripting.JavaScript.Services
                         scope.SetVariable(variableName, context.GetParameter(variableName));
                     }
 
-                    return context.GetParameter("output");
+                    return output;
                 }
             }
             catch (Exception ex)

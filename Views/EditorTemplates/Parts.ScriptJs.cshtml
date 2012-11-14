@@ -7,11 +7,11 @@
             $(document).on("selectedEngineChanged.ScriptingExtensions", function (values) {
                 if (values.engine != "JS") return;
 
-                //values.editor.getSession().setMode("ace/mode/javascript");
-                //values.help.sample.getSession().setMode("ace/mode/javascript");
+                values.editor.getSession().setMode("ace/mode/javascript");
+                values.help.sample.getSession().setMode("ace/mode/javascript");
 
-@*                values.help.hint.text("@T("")");
-                values.help.sample.getSession().setValue("");*@
+                values.help.hint.text("@T("You can use normal JavaScript here. The last statement will be the output of the script.")");
+                values.help.sample.getSession().setValue("var hello = \"Hello JavaScript!\"; \r\nhello;");
             });
         })(jQuery);
     </script>
