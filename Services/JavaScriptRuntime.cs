@@ -37,6 +37,8 @@ namespace OrchardHUN.Scripting.JavaScript.Services
                         context.SetParameter(variable.Key, variable.Value);
                     }
 
+                    context.SetParameter("Factory", new TypeFactory(scope.Assemblies));
+
                     _eventHandler.BeforeExecution(new BeforeJavaScriptExecutionContext(scope, context));
                     var output = context.Run(expression);
                     _eventHandler.AfterExecution(new AfterJavaScriptExecutionContext(scope, context));

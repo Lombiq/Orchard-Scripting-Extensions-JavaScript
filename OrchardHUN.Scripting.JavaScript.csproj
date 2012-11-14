@@ -94,6 +94,7 @@
     <Compile Include="Drivers\ScriptPartDriver.cs" />
     <Compile Include="IJavaScriptRuntimeEventHandler.cs" />
     <Compile Include="Services\JavaScriptRuntime.cs" />
+    <Compile Include="Services\TypeFactory.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
