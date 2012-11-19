@@ -28,7 +28,7 @@ namespace OrchardHUN.Scripting.JavaScript.Services
         public object Create(string typeName, object[] ctorArguments = null)
         {
             if (String.IsNullOrEmpty(typeName) || !_types.ContainsKey(typeName))
-                throw new ScriptRuntimeException("The type " + typeName + " was not found in any assembly loaded into the script scope");
+                throw new ScriptRuntimeException("The type " + typeName + " was not found in any assembly loaded into the script scope.");
 
             return Activator.CreateInstance(_types[typeName], ctorArguments);
         }
