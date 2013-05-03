@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Noesis.Javascript;
+﻿using Noesis.Javascript;
 using Orchard.Events;
 using OrchardHUN.Scripting.Services;
 
