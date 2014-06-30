@@ -101,6 +101,9 @@
     <Compile Include="Services\JavaScriptRuntime.cs" />
     <Compile Include="Services\TypeFactory.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Licence.md" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
