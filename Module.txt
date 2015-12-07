@@ -1,13 +1,13 @@
 ﻿Name: Orchard Scripting Extensions: JavaScript
 AntiForgery: enabled
 Author: The Orchard Hungary Team / Lombiq
-Website: http://orchardscriptingjs.codeplex.com
+Website: https://github.com/Lombiq/Orchard-Scripting-Extensions-JavaScript
 Version: 1.0
 OrchardVersion: 1.8
-Description: Enables Orchard scripting through JavaScript. Uses Javascript.NET (http://javascriptdotnet.codeplex.com/).
+Description: Enables Orchard scripting through JavaScript. Uses Javascript.NET (https://github.com/JavascriptNet/Javascript.Net).
 Features:
     OrchardHUN.Scripting.JavaScript:
 		Name: Orchard Scripting Extensions: JavaScript
-        Description: Enables Orchard scripting through JavaScript. Uses Javascript.NET (http://javascriptdotnet.codeplex.com/).
+        Description: Enables Orchard scripting through JavaScript. Uses Javascript.NET (https://github.com/JavascriptNet/Javascript.Net/).
 		Category: Scripting
 		Dependencies: OrchardHUN.Scripting, JavaScript.NET
